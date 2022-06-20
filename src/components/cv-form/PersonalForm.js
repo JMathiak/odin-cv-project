@@ -25,6 +25,14 @@ class PersonalForm extends Component {
               onChange={this.props.onChange}
             ></input>
           </label>
+          <label>
+            Phone
+            <input
+              type="text"
+              name="phone"
+              onChange={this.props.onChange}
+            ></input>
+          </label>
           <button onClick={this.props.onClick}>Submit</button>
         </form>
       </div>
