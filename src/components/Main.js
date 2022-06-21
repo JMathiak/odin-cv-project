@@ -4,6 +4,7 @@ import Display from "./cv-form/Display";
 import PersonalForm from "./cv-form/PersonalForm";
 import EducationForm from "./cv-form/EducationForm";
 import SchoolHistory from "./cv-display/SchoolHistory";
+import WorkForm from "./cv-form/WorkForm";
 class Main extends Component {
   constructor(props) {
     super(props);
@@ -75,29 +76,26 @@ class Main extends Component {
       studyDateStart: "",
       studyDateEnd: "",
     });
-    // this.setState((prevState) => {
-    //   let cv = Object.assign({}, prevState.cv);
-    //   // school.schoolName = this.state.schoolName;
-    //   // school.study = this.state.study;
-    //   // school.studyDateStart = this.state.studyDateStart;
-    //   // school.studyDateEnd = this.state.studyDateEnd;
-    //   // school.uniqueID = uniqid();
-    //   educationHistory.concat(school);
-    //   cv.schoolHistory = educationHistory;
-    //   study = "";
-    //   schoolName = "";
-    //   studyDateStart = "";
-    //   studyDateEnd = "";
-    //   return {
-    //     school,
-    //     educationHistory,
-    //     cv,
-    //     study,
-    //     schoolName,
-    //     studyDateStart,
-    //     studyDateEnd,
-    //   };
-    // });
+  }
+
+  onClickWork(e) {
+    e.preventDefault();
+    let job = {
+      company: this.state.company,
+      position: this.state.position,
+      tasks: this.state.tasks,
+      companyStart: this.state.companyStart,
+      companyEnd: this.state.companyEnd,
+      uniqueID: uniqid(),
+    };
+    this.setState({
+      workHistory: this.state.workHistory.concat(job),
+      company: "",
+      position: "",
+      tasks: "",
+      companyStart: "",
+      companyEnd: "",
+    });
   }
 
   onClickPersonalEdit(e) {
@@ -172,7 +170,15 @@ class Main extends Component {
           studyDateStart={this.state.studyDateStart}
           studyDateEnd={this.state.studyDateEnd}
         />
-
+        <WorkForm
+          onChange={this.onChange}
+          onClick={this.onClickWork}
+          company={this.state.company}
+          position={this.state.position}
+          tasks={this.state.tasks}
+          companyStart={this.state.companyStart}
+          companyEnd={this.state.companyEnd}
+        />
         <div className="display">
           <SchoolHistory schoolHistory={this.state.educationHistory} />
         </div>

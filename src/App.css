@@ -15,7 +15,7 @@ html,body{
  
 }
 
-.personal-form, .education-form{
+.personal-form, .education-form, .work-form{
   display: flex;
   flex-direction: column;
 }
