@@ -15,6 +15,7 @@ class SchoolHistory extends Component {
               name={school.schoolName}
               school={school}
               key={school.uniqueID}
+              setEducationHistory={this.props.setEducationHistory}
             />
           ))}
         </ul>

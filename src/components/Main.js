@@ -34,6 +34,7 @@ class Main extends Component {
     this.onClickEducation = this.onClickEducation.bind(this);
     this.onClickEducationEdit = this.onClickEducationEdit.bind(this);
     this.onCLickEducationDelete = this.onCLickEducationDelete.bind(this);
+    this.setEducationHistory = this.setEducationHistory.bind(this);
   }
 
   onChange(e) {
@@ -150,6 +151,10 @@ class Main extends Component {
     });
   }
 
+  setEducationHistory(newHistory) {
+    this.setState({ educationHistory: newHistory });
+  }
+
   render() {
     return (
       <div className="app-container">
@@ -180,7 +185,10 @@ class Main extends Component {
           companyEnd={this.state.companyEnd}
         />
         <div className="display">
-          <SchoolHistory schoolHistory={this.state.educationHistory} />
+          <SchoolHistory
+            schoolHistory={this.state.educationHistory}
+            setEducationHistory={this.setEducationHistory}
+          />
         </div>
       </div>
     );
