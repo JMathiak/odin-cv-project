@@ -6,6 +6,7 @@ import EducationForm from "./cv-form/EducationForm";
 import SchoolHistory from "./cv-display/SchoolHistory";
 import WorkForm from "./cv-form/WorkForm";
 import JobHistory from "./cv-display/JobHistory";
+import PersonalInfo from "./cv-display/PersonalInfo";
 class Main extends Component {
   constructor(props) {
     super(props);
@@ -13,6 +14,7 @@ class Main extends Component {
       name: "",
       email: "",
       phone: "",
+      personalInformation: {},
       schoolName: "",
       study: "",
       studyDateStart: "",
@@ -49,14 +51,13 @@ class Main extends Component {
 
   onClickPersonal(e) {
     e.preventDefault();
-    this.setState((prevState) => {
-      let cv = Object.assign({}, prevState.cv);
-      cv.name = this.state.name;
-      cv.email = this.state.email;
-      cv.phone = this.state.phone;
-      return { cv };
-    });
     this.setState({
+      personalInformation: {
+        ...this.state.personalInformation,
+        name: this.state.name,
+        email: this.state.email,
+        phone: this.state.phone,
+      },
       name: "",
       email: "",
       phone: "",
@@ -188,7 +189,7 @@ class Main extends Component {
         />
         <div className="display">
           <div>Personal</div>
-          <PersonalInfo />
+          <PersonalInfo personalInformation={this.state.personalInformation} />
           <div>Education: </div>
           <SchoolHistory
             schoolHistory={this.state.educationHistory}
