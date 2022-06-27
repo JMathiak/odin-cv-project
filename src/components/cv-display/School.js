@@ -18,9 +18,18 @@ class School extends Component {
   render() {
     return (
       <li>
-        {this.props.name}, {this.props.school.study},
-        {this.props.school.studyDateStart} - {this.props.school.studyDateEnd}
-        <button onClick={this.deleteHandler}>Delete</button>
+        <ul>
+          <li>
+            School Name: {this.props.name}{" "}
+            <button onClick={this.deleteHandler}>Delete</button>{" "}
+            <button>Edit</button>
+          </li>
+          <li>Subject of Study: {this.props.school.study}</li>
+          <li>
+            Dates Studied: {this.props.school.studyDateStart} -{" "}
+            {this.props.school.studyDateEnd}
+          </li>
+        </ul>
       </li>
     );
   }
