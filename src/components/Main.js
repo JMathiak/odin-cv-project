@@ -39,6 +39,7 @@ class Main extends Component {
     this.onCLickEducationDelete = this.onCLickEducationDelete.bind(this);
     this.setEducationHistory = this.setEducationHistory.bind(this);
     this.onClickWork = this.onClickWork.bind(this);
+    this.setWorkHistory = this.setWorkHistory.bind(this);
   }
 
   onChange(e) {
@@ -158,6 +159,10 @@ class Main extends Component {
     this.setState({ educationHistory: newHistory });
   }
 
+  setWorkHistory(newHistory) {
+    this.setState({ workHistory: newHistory });
+  }
+
   render() {
     return (
       <div className="app-container">
@@ -196,7 +201,10 @@ class Main extends Component {
             setEducationHistory={this.setEducationHistory}
           />
           <div>Work: </div>
-          <JobHistory jobHistory={this.state.workHistory} />
+          <JobHistory
+            jobHistory={this.state.workHistory}
+            setWorkHistory={this.setWorkHistory}
+          />
         </div>
       </div>
     );

@@ -15,6 +15,7 @@ class JobHistory extends Component {
               name={work.company}
               work={work}
               key={work.uniqueID}
+              setWorkHistory={this.props.setWorkHistory}
             />
           ))}
         </ul>
