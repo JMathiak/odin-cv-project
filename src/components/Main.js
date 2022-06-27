@@ -5,6 +5,7 @@ import PersonalForm from "./cv-form/PersonalForm";
 import EducationForm from "./cv-form/EducationForm";
 import SchoolHistory from "./cv-display/SchoolHistory";
 import WorkForm from "./cv-form/WorkForm";
+import JobHistory from "./cv-display/JobHistory";
 class Main extends Component {
   constructor(props) {
     super(props);
@@ -35,6 +36,7 @@ class Main extends Component {
     this.onClickEducationEdit = this.onClickEducationEdit.bind(this);
     this.onCLickEducationDelete = this.onCLickEducationDelete.bind(this);
     this.setEducationHistory = this.setEducationHistory.bind(this);
+    this.onClickWork = this.onClickWork.bind(this);
   }
 
   onChange(e) {
@@ -185,10 +187,15 @@ class Main extends Component {
           companyEnd={this.state.companyEnd}
         />
         <div className="display">
+          <div>Personal</div>
+          <PersonalInfo />
+          <div>Education: </div>
           <SchoolHistory
             schoolHistory={this.state.educationHistory}
             setEducationHistory={this.setEducationHistory}
           />
+          <div>Work: </div>
+          <JobHistory jobHistory={this.state.workHistory} />
         </div>
       </div>
     );

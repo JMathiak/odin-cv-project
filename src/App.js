@@ -21,6 +21,12 @@ Plan:
 1) Set up forms and functions for changing each text field
 2) Submit buttons to update states + display data
 
+6/22/22
+-Display all data
+-Add edit buttons
+-Format data
+-Add PDF button
+
 
 
 
