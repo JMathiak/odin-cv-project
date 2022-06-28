@@ -28,6 +28,13 @@ Plan:
 -Add PDF button
 
 
+Edit logic:
+Find index of the object (Make this a state) -> pos = myArray.map(function(e) { return e.uniqueID; }).indexOf(this.props.shcool.uniqueID);
+Set relating states to the value of that object to fill in form
+Change state that dictates what the button does/says
+In onclick function add an if statement that checks for editing status
+-if editing then use the index state to edit the state. Copy the education array, use index state to edit the copied array
+-assign the array to the state
 
 
 */

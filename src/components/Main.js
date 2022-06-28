@@ -29,6 +29,8 @@ class Main extends Component {
       job: {},
       workHistory: [],
       cv: {},
+      editingSchool: false,
+      schoolIndex: 0,
     };
     this.onChange = this.onChange.bind(this);
     this.onClickPersonal = this.onClickPersonal.bind(this);
@@ -40,6 +42,8 @@ class Main extends Component {
     this.setEducationHistory = this.setEducationHistory.bind(this);
     this.onClickWork = this.onClickWork.bind(this);
     this.setWorkHistory = this.setWorkHistory.bind(this);
+    this.setSchoolIndex = this.setSchoolIndex.bind(this);
+    this.setSchoolEdit = this.setSchoolEdit.bind(this);
   }
 
   onChange(e) {
@@ -67,20 +71,38 @@ class Main extends Component {
 
   onClickEducation(e) {
     e.preventDefault();
-    let school = {
-      schoolName: this.state.schoolName,
-      study: this.state.study,
-      studyDateStart: this.state.studyDateStart,
-      studyDateEnd: this.state.studyDateEnd,
-      uniqueID: uniqid(),
-    };
-    this.setState({
-      educationHistory: this.state.educationHistory.concat(school),
-      schoolName: "",
-      study: "",
-      studyDateStart: "",
-      studyDateEnd: "",
-    });
+    if (this.state.editingSchool === true) {
+      const eduCopy = this.state.educationHistory.slice();
+      eduCopy[this.state.schoolIndex] = {
+        schoolName: this.state.schoolName,
+        study: this.state.study,
+        studyDateStart: this.state.studyDateStart,
+        studyDateEnd: this.state.studyDateEnd,
+      };
+      this.setState({
+        educationHistory: eduCopy,
+        schoolName: "",
+        study: "",
+        studyDateStart: "",
+        studyDateEnd: "",
+        editingSchool: false,
+      });
+    } else {
+      let school = {
+        schoolName: this.state.schoolName,
+        study: this.state.study,
+        studyDateStart: this.state.studyDateStart,
+        studyDateEnd: this.state.studyDateEnd,
+        uniqueID: uniqid(),
+      };
+      this.setState({
+        educationHistory: this.state.educationHistory.concat(school),
+        schoolName: "",
+        study: "",
+        studyDateStart: "",
+        studyDateEnd: "",
+      });
+    }
   }
 
   onClickWork(e) {
@@ -163,6 +185,20 @@ class Main extends Component {
     this.setState({ workHistory: newHistory });
   }
 
+  setSchoolIndex(index) {
+    this.setState({ schoolIndex: index });
+  }
+
+  setSchoolEdit(school) {
+    this.setState({
+      schoolName: school.schoolName,
+      study: school.study,
+      studyDateStart: school.studyDateStart,
+      studyDateEnd: school.studyDateEnd,
+      editingSchool: true,
+    });
+  }
+
   render() {
     return (
       <div className="app-container">
@@ -182,6 +218,7 @@ class Main extends Component {
           study={this.state.study}
           studyDateStart={this.state.studyDateStart}
           studyDateEnd={this.state.studyDateEnd}
+          editingSchool={this.state.editingSchool}
         />
         <WorkForm
           onChange={this.onChange}
@@ -199,6 +236,8 @@ class Main extends Component {
           <SchoolHistory
             schoolHistory={this.state.educationHistory}
             setEducationHistory={this.setEducationHistory}
+            setSchoolIndex={this.setSchoolIndex}
+            setSchoolEdit={this.setSchoolEdit}
           />
           <div>Work: </div>
           <JobHistory

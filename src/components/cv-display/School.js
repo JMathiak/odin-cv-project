@@ -4,6 +4,7 @@ class School extends Component {
   constructor(props) {
     super(props);
     this.deleteHandler = this.deleteHandler.bind(this);
+    this.editHandler = this.editHandler.bind(this);
   }
 
   deleteHandler() {
@@ -15,11 +16,21 @@ class School extends Component {
     console.log(newArr);
   }
 
+  editHandler() {
+    let pos = this.props.schools
+      .map(function (e) {
+        return e.uniqueID;
+      })
+      .indexOf(this.props.schoolID);
+    this.props.setSchoolIndex(pos);
+    this.props.setSchoolEdit(this.props.school);
+  }
+
   render() {
     return (
       <li>
         {this.props.name} <button onClick={this.deleteHandler}>Delete</button>{" "}
-        <button>Edit</button>
+        <button onClick={this.editHandler}>Edit</button>
         <ul>
           <li>School Name: {this.props.name} </li>
           <li>Subject of Study: {this.props.school.study}</li>
