@@ -113,22 +113,42 @@ class Main extends Component {
 
   onClickWork(e) {
     e.preventDefault();
-    let job = {
-      company: this.state.company,
-      position: this.state.position,
-      tasks: this.state.tasks,
-      companyStart: this.state.companyStart,
-      companyEnd: this.state.companyEnd,
-      uniqueID: uniqid(),
-    };
-    this.setState({
-      workHistory: this.state.workHistory.concat(job),
-      company: "",
-      position: "",
-      tasks: "",
-      companyStart: "",
-      companyEnd: "",
-    });
+    if (this.state.editingWork === true) {
+      const workCopy = this.state.workHistory.slice();
+      workCopy[this.state.workIndex] = {
+        company: this.state.company,
+        position: this.state.position,
+        tasks: this.state.tasks,
+        companyStart: this.state.companyStart,
+        companyEnd: this.state.companyEnd,
+      };
+      this.setState({
+        workHistory: workCopy,
+        company: "",
+        position: "",
+        tasks: "",
+        companyStart: "",
+        companyEnd: "",
+        editingWork: false,
+      });
+    } else {
+      let job = {
+        company: this.state.company,
+        position: this.state.position,
+        tasks: this.state.tasks,
+        companyStart: this.state.companyStart,
+        companyEnd: this.state.companyEnd,
+        uniqueID: uniqid(),
+      };
+      this.setState({
+        workHistory: this.state.workHistory.concat(job),
+        company: "",
+        position: "",
+        tasks: "",
+        companyStart: "",
+        companyEnd: "",
+      });
+    }
   }
 
   onClickPersonalEdit(e) {
