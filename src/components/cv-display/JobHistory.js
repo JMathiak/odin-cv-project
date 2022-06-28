@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Job from "./Job";
+import uniqid from "uniqid";
 class JobHistory extends Component {
   constructor(props) {
     super(props);
@@ -14,8 +15,11 @@ class JobHistory extends Component {
               jobs={this.props.jobHistory}
               name={work.company}
               work={work}
-              key={work.uniqueID}
+              workID={work.uniqueID}
+              key={uniqid()}
               setWorkHistory={this.props.setWorkHistory}
+              setWorkIndex={this.props.setWorkIndex}
+              setWorkEdit={this.props.setWorkEdit}
             />
           ))}
         </ul>

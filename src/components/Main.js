@@ -31,6 +31,9 @@ class Main extends Component {
       cv: {},
       editingSchool: false,
       schoolIndex: 0,
+      editingPersonal: false,
+      editingWork: false,
+      workIndex: 0,
     };
     this.onChange = this.onChange.bind(this);
     this.onClickPersonal = this.onClickPersonal.bind(this);
@@ -44,6 +47,9 @@ class Main extends Component {
     this.setWorkHistory = this.setWorkHistory.bind(this);
     this.setSchoolIndex = this.setSchoolIndex.bind(this);
     this.setSchoolEdit = this.setSchoolEdit.bind(this);
+    this.setPersonalEdit = this.setPersonalEdit.bind(this);
+    this.setWorkEdit = this.setWorkEdit.bind(this);
+    this.setWorkIndex = this.setWorkIndex.bind(this);
   }
 
   onChange(e) {
@@ -189,6 +195,10 @@ class Main extends Component {
     this.setState({ schoolIndex: index });
   }
 
+  setWorkIndex(index) {
+    this.setState({ workIndex: index });
+  }
+
   setSchoolEdit(school) {
     this.setState({
       schoolName: school.schoolName,
@@ -196,6 +206,26 @@ class Main extends Component {
       studyDateStart: school.studyDateStart,
       studyDateEnd: school.studyDateEnd,
       editingSchool: true,
+    });
+  }
+
+  setPersonalEdit(info) {
+    this.setState({
+      name: info.name,
+      email: info.email,
+      phone: info.phone,
+      editingPersonal: true,
+    });
+  }
+
+  setWorkEdit(work) {
+    this.setState({
+      company: work.company,
+      position: work.position,
+      tasks: work.tasks,
+      companyStart: work.companyStart,
+      companyEnd: work.companyEnd,
+      editingWork: true,
     });
   }
 
@@ -231,7 +261,10 @@ class Main extends Component {
         />
         <div className="display">
           <div>Personal</div>
-          <PersonalInfo personalInformation={this.state.personalInformation} />
+          <PersonalInfo
+            personalInformation={this.state.personalInformation}
+            setPersonalEdit={this.setPersonalEdit}
+          />
           <div>Education: </div>
           <SchoolHistory
             schoolHistory={this.state.educationHistory}
@@ -243,6 +276,8 @@ class Main extends Component {
           <JobHistory
             jobHistory={this.state.workHistory}
             setWorkHistory={this.setWorkHistory}
+            setWorkIndex={this.setWorkIndex}
+            setWorkEdit={this.setWorkEdit}
           />
         </div>
       </div>

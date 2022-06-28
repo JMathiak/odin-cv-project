@@ -8,9 +8,14 @@ class PersonalInfo extends Component {
   render() {
     return (
       <ul>
-        <li>Name: {this.props.personalInformation.name}</li>
-        <li>Email: {this.props.personalInformation.email}</li>
-        <li>Phone: {this.props.personalInformation.phone}</li>
+        <li>
+          <button>Edit</button>
+        </li>
+        <ul>
+          <li>Name: {this.props.personalInformation.name}</li>
+          <li>Email: {this.props.personalInformation.email}</li>
+          <li>Phone: {this.props.personalInformation.phone}</li>
+        </ul>
       </ul>
     );
   }
