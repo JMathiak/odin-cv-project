@@ -30,14 +30,15 @@ html,body{
   }
   
   .form-container, .education-form-container{
-    outline: 1px solid red;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
     height: 100%;
   }
   
   .app-container{
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: .5fr, 1fr 1fr, 1fr, .25fr;
+    grid-template-columns: .75fr 1fr;
+    grid-template-rows: .5fr, 1fr 1fr, 1fr, .5fr;
     grid-template-areas: 
     'hd hd'
     'pf dis'
@@ -54,8 +55,11 @@ html,body{
 
   .header{
     grid-area: hd;
+    font-size: 48px;
+    border-bottom: 1px solid black;
   }
 
   .footer{
     grid-area: ft;
+    border-top: 1px solid black;
   }

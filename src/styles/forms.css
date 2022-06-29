@@ -5,7 +5,9 @@
 }
 
 input[type=text]{
-    width: 50%;
+    width: 70%;
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
 
   .personal-form, .education-form, .work-form{
