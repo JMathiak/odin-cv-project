@@ -12,6 +12,9 @@ class Job extends Component {
       (curJob) => curJob.uniqueID !== this.props.work.uniqueID
     );
     this.props.setWorkHistory(newArr);
+    if (newArr.length === 0) {
+      this.props.setJobEntered(false);
+    }
   }
 
   editHandler() {

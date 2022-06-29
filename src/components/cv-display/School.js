@@ -12,8 +12,9 @@ class School extends Component {
       (curSchool) => curSchool.uniqueID !== this.props.school.uniqueID
     );
     this.props.setEducationHistory(newArr);
-    console.log(this.props.schools);
-    console.log(newArr);
+    if (newArr.length === 0) {
+      this.props.setSchoolEntered(false);
+    }
   }
 
   editHandler() {

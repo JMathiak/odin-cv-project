@@ -8,7 +8,8 @@ class JobHistory extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{ display: this.props.jobEntered ? "block" : "none" }}>
+        Professional Experience:
         <ul>
           {this.props.jobHistory.map((work) => (
             <Job
@@ -20,6 +21,7 @@ class JobHistory extends Component {
               setWorkHistory={this.props.setWorkHistory}
               setWorkIndex={this.props.setWorkIndex}
               setWorkEdit={this.props.setWorkEdit}
+              setJobEntered={this.props.setJobEntered}
             />
           ))}
         </ul>

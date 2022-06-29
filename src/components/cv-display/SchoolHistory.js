@@ -8,7 +8,8 @@ class SchoolHistory extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{ display: this.props.schoolEntered ? "block" : "none" }}>
+        Education:
         <ul>
           {this.props.schoolHistory.map((school) => (
             <School
@@ -20,6 +21,7 @@ class SchoolHistory extends Component {
               setEducationHistory={this.props.setEducationHistory}
               setSchoolIndex={this.props.setSchoolIndex}
               setSchoolEdit={this.props.setSchoolEdit}
+              setSchoolEntered={this.props.setSchoolEntered}
             />
           ))}
         </ul>

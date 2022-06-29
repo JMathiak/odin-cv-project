@@ -7,6 +7,7 @@ import SchoolHistory from "./cv-display/SchoolHistory";
 import WorkForm from "./cv-form/WorkForm";
 import JobHistory from "./cv-display/JobHistory";
 import PersonalInfo from "./cv-display/PersonalInfo";
+import "../styles/main.css";
 class Main extends Component {
   constructor(props) {
     super(props);
@@ -15,12 +16,14 @@ class Main extends Component {
       email: "",
       phone: "",
       personalInformation: {},
+      personalEntered: false,
       schoolName: "",
       study: "",
       studyDateStart: "",
       studyDateEnd: "",
       school: {},
       educationHistory: [],
+      schoolEntered: false,
       company: "",
       position: "",
       tasks: "",
@@ -28,6 +31,7 @@ class Main extends Component {
       companyEnd: "",
       job: {},
       workHistory: [],
+      jobEntered: false,
       cv: {},
       editingSchool: false,
       schoolIndex: 0,
@@ -50,6 +54,8 @@ class Main extends Component {
     this.setPersonalEdit = this.setPersonalEdit.bind(this);
     this.setWorkEdit = this.setWorkEdit.bind(this);
     this.setWorkIndex = this.setWorkIndex.bind(this);
+    this.setJobEntered = this.setJobEntered.bind(this);
+    this.setSchoolEntered = this.setSchoolEntered.bind(this);
   }
 
   onChange(e) {
@@ -72,6 +78,7 @@ class Main extends Component {
       name: "",
       email: "",
       phone: "",
+      personalEntered: true,
     });
   }
 
@@ -107,6 +114,7 @@ class Main extends Component {
         study: "",
         studyDateStart: "",
         studyDateEnd: "",
+        schoolEntered: true,
       });
     }
   }
@@ -147,6 +155,7 @@ class Main extends Component {
         tasks: "",
         companyStart: "",
         companyEnd: "",
+        jobEntered: true,
       });
     }
   }
@@ -219,6 +228,14 @@ class Main extends Component {
     this.setState({ workIndex: index });
   }
 
+  setJobEntered(status) {
+    this.setState({ jobEntered: status });
+  }
+
+  setSchoolEntered(status) {
+    this.setState({ schoolEntered: status });
+  }
+
   setSchoolEdit(school) {
     this.setState({
       schoolName: school.schoolName,
@@ -280,24 +297,26 @@ class Main extends Component {
           companyEnd={this.state.companyEnd}
         />
         <div className="display">
-          <div>Personal</div>
           <PersonalInfo
             personalInformation={this.state.personalInformation}
             setPersonalEdit={this.setPersonalEdit}
+            personalEntered={this.state.personalEntered}
           />
-          <div>Education: </div>
           <SchoolHistory
             schoolHistory={this.state.educationHistory}
             setEducationHistory={this.setEducationHistory}
             setSchoolIndex={this.setSchoolIndex}
             setSchoolEdit={this.setSchoolEdit}
+            schoolEntered={this.state.schoolEntered}
+            setSchoolEntered={this.setSchoolEntered}
           />
-          <div>Work: </div>
           <JobHistory
             jobHistory={this.state.workHistory}
             setWorkHistory={this.setWorkHistory}
             setWorkIndex={this.setWorkIndex}
             setWorkEdit={this.setWorkEdit}
+            jobEntered={this.state.jobEntered}
+            setJobEntered={this.setJobEntered}
           />
         </div>
       </div>
