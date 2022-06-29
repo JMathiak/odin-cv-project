@@ -29,16 +29,13 @@ class Job extends Component {
   render() {
     return (
       <li>
-        {this.props.name} <button onClick={this.deleteHandler}>Delete</button>{" "}
+        {this.props.name} &emsp; {this.props.work.companyStart} -{" "}
+        {this.props.work.companyEnd} &emsp;
+        <button onClick={this.deleteHandler}>Delete</button>{" "}
         <button onClick={this.editHandler}>Edit</button>
         <ul>
-          <li>Company Name: {this.props.name}</li>
-          <li>Job Title: {this.props.work.position}</li>
-          <li>Job Tasks: {this.props.work.tasks}</li>
-          <li>
-            Dates Working: {this.props.work.companyStart} -
-            {this.props.work.companyEnd}
-          </li>
+          <li>{this.props.work.position}</li>
+          <li>{this.props.work.tasks}</li>
         </ul>
       </li>
     );
