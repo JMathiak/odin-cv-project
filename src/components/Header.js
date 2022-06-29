@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "../styles/main.css";
 class Header extends Component {
   render() {
-    return <div className="header">Header</div>;
+    return <div className="header">CV Generator</div>;
   }
 }
 
