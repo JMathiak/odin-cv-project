@@ -9,8 +9,8 @@ class PersonalForm extends Component {
   render() {
     return (
       <div className="form-container">
-        Add Personal Information
-        <form className="personal-form">
+        <div className="form-label">Add Personal Information</div>
+        <form className="personal-form" id="form">
           <label for="name">Name </label>
           <input
             id="name"
@@ -19,7 +19,6 @@ class PersonalForm extends Component {
             value={this.props.name}
             onChange={this.props.onChange}
           ></input>
-
           <label for="email">Email </label>
           <input
             id="email"
@@ -28,7 +27,6 @@ class PersonalForm extends Component {
             value={this.props.email}
             onChange={this.props.onChange}
           ></input>
-
           <label for="phone">Phone </label>
           <input
             type="text"
@@ -36,7 +34,6 @@ class PersonalForm extends Component {
             value={this.props.phone}
             onChange={this.props.onChange}
           ></input>
-
           <div className="form-buttons">
             <button onClick={this.props.onClick}>Submit</button>
             <button onClick={this.props.onClickEdit}>Edit</button>

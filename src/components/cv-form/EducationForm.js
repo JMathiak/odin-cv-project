@@ -8,7 +8,7 @@ class EducationForm extends Component {
   render() {
     return (
       <div className="form-container">
-        Add Education History
+        <div className="form-label">Add Education History</div>
         <form className="education-form">
           <label for="name">School Name </label>
           <input

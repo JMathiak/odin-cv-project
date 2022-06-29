@@ -8,7 +8,7 @@ class WorkForm extends Component {
   render() {
     return (
       <div className="form-container">
-        Add Professional Experience
+        <div className="form-label">Add Professional Experience</div>
         <form className="work-form">
           <label for="name">Company Name </label>
           <input

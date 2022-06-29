@@ -8,3 +8,13 @@ input[type=text]{
     width: 50%;
   }
 
+  .personal-form, .education-form, .work-form{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+  }
+
+  .form-label{
+    margin:10px;
+    font-size: 20px;
+  }
