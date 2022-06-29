@@ -15,11 +15,7 @@ html,body{
    
   }
   
-  .personal-form, .education-form, .work-form{
-    display: flex;
-    flex-direction: column;
-    margin: 10px;
-  }
+ 
   
   .personal-form-container{
     grid-area: pf;
@@ -38,19 +34,28 @@ html,body{
     height: 100%;
   }
   
-  
-  
-
-  
   .app-container{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(3, 1fr);
-    grid-template-areas: 'pf dis'
+    grid-template-rows: .5fr, 1fr 1fr, 1fr, .25fr;
+    grid-template-areas: 
+    'hd hd'
+    'pf dis'
     'ef dis'
-    'wf dis';
+    'wf dis'
+    'ft ft'
+    ;
+    height: 100%;
   }
 
   .display{
     margin: 20px;
+  }
+
+  .header{
+    grid-area: hd;
+  }
+
+  .footer{
+    grid-area: ft;
   }

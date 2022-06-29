@@ -8,6 +8,8 @@ import WorkForm from "./cv-form/WorkForm";
 import JobHistory from "./cv-display/JobHistory";
 import PersonalInfo from "./cv-display/PersonalInfo";
 import "../styles/main.css";
+import Header from "./Header";
+import Footer from "./Footer";
 class Main extends Component {
   constructor(props) {
     super(props);
@@ -163,9 +165,9 @@ class Main extends Component {
   onClickPersonalEdit(e) {
     e.preventDefault();
     this.setState({
-      name: this.state.cv.name,
-      email: this.state.cv.email,
-      phone: this.state.cv.phone,
+      name: this.state.personalInformation.name,
+      email: this.state.personalInformation.email,
+      phone: this.state.personalInformation.phone,
     });
   }
 
@@ -181,17 +183,14 @@ class Main extends Component {
 
   onClickPersonalDelete(e) {
     e.preventDefault();
-    this.setState({
+    let deletedPersonalObj = {
       name: "",
       email: "",
       phone: "",
-    });
-    this.setState((prevState) => {
-      let cv = Object.assign({}, prevState.cv);
-      cv.name = this.state.name;
-      cv.email = this.state.email;
-      cv.phone = this.state.phone;
-      return { cv };
+    };
+    this.setState({
+      personalInformation: deletedPersonalObj,
+      personalEntered: false,
     });
   }
 
@@ -269,6 +268,7 @@ class Main extends Component {
   render() {
     return (
       <div className="app-container">
+        <Header />
         <PersonalForm
           onChange={this.onChange}
           onClick={this.onClickPersonal}
@@ -320,6 +320,7 @@ class Main extends Component {
             setJobEntered={this.setJobEntered}
           />
         </div>
+        <Footer />
       </div>
     );
   }
