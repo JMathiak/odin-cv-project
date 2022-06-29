@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Display from "./Display";
+import "../../styles/forms.css";
 class PersonalForm extends Component {
   constructor(props) {
     super(props);
@@ -8,6 +9,7 @@ class PersonalForm extends Component {
   render() {
     return (
       <div className="form-container">
+        Add Personal Information
         <form className="personal-form">
           <label for="name">Name </label>
           <input
@@ -35,9 +37,11 @@ class PersonalForm extends Component {
             onChange={this.props.onChange}
           ></input>
 
-          <button onClick={this.props.onClick}>Submit</button>
-          <button onClick={this.props.onClickEdit}>Edit</button>
-          <button onClick={this.props.onClickDelete}>Delete</button>
+          <div className="form-buttons">
+            <button onClick={this.props.onClick}>Submit</button>
+            <button onClick={this.props.onClickEdit}>Edit</button>
+            <button onClick={this.props.onClickDelete}>Delete</button>
+          </div>
         </form>
       </div>
     );

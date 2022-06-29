@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import "../../styles/forms.css";
 class WorkForm extends Component {
   constructor(props) {
     super(props);
@@ -8,6 +8,7 @@ class WorkForm extends Component {
   render() {
     return (
       <div className="form-container">
+        Add Professional Experience
         <form className="work-form">
           <label for="name">Company Name </label>
           <input
@@ -50,9 +51,11 @@ class WorkForm extends Component {
             value={this.props.companyEnd}
             onChange={this.props.onChange}
           ></input>
-          <button onClick={this.props.onClick}>Submit</button>
-          <button onClick={this.props.onClickEdit}>Edit</button>
-          <button onClick={this.props.onClickDelete}>Delete</button>
+          <div className="form-buttons">
+            <button onClick={this.props.onClick}>
+              {!this.props.editingWork ? "Submit" : "Edit"}
+            </button>
+          </div>
         </form>
       </div>
     );
