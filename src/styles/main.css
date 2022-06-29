@@ -18,6 +18,7 @@ html,body{
   .personal-form, .education-form, .work-form{
     display: flex;
     flex-direction: column;
+    margin: 10px;
   }
   
   .personal-form-container{
@@ -37,9 +38,9 @@ html,body{
     height: 100%;
   }
   
-  input[type=text]{
-    width: 90%;
-  }
+  
+  
+
   
   .app-container{
     display: grid;
@@ -48,4 +49,8 @@ html,body{
     grid-template-areas: 'pf dis'
     'ef dis'
     'wf dis';
+  }
+
+  .display{
+    margin: 20px;
   }

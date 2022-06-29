@@ -1,0 +1,10 @@
+
+.form-buttons > button{
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+input[type=text]{
+    width: 50%;
+  }
+
