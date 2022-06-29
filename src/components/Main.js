@@ -295,6 +295,7 @@ class Main extends Component {
           tasks={this.state.tasks}
           companyStart={this.state.companyStart}
           companyEnd={this.state.companyEnd}
+          editingWork={this.state.editingWork}
         />
         <div className="display">
           <PersonalInfo
