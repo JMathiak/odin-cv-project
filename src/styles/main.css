@@ -57,9 +57,15 @@ html,body{
     grid-area: hd;
     font-size: 48px;
     border-bottom: 1px solid black;
+    color:white;
+    background-color: #68a3e5;
   }
 
   .footer{
     grid-area: ft;
     border-top: 1px solid black;
+    color:white;
+    background-color: #68a3e5;
+    display: flex;
+    justify-content: center;
   }
