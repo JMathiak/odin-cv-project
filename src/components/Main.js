@@ -43,34 +43,6 @@ const Main = () => {
 
 
 
-  //Need to implement a filter to the school history array to get the school of interest
-  onClickEducationEdit(e) {
-    e.preventDefault();
-    this.setState({
-      school: this.state.cv.school,
-      study: this.state.cv.study,
-      studyDate: this.state.cv.studyDate,
-    });
-  }
-
-
-  //Need to implement a filter to the school history array to delete school of interest
-  onCLickEducationDelete(e) {
-    e.preventDefault();
-    this.setState({
-      school: "",
-      study: "",
-      studyDate: "",
-    });
-    this.setState((prevState) => {
-      let cv = Object.assign({}, prevState.cv);
-      cv.name = this.state.name;
-      cv.email = this.state.email;
-      cv.phone = this.state.phone;
-      return { cv };
-    });
-  }
-
   
 
   setSchoolEdit(school) {
@@ -153,25 +125,25 @@ const Main = () => {
         />
         <div className="display">
           <PersonalInfo
-            personalInformation={this.state.personalInformation}
+            personalInformation={personalInformation}
             setPersonalEdit={this.setPersonalEdit}
-            personalEntered={this.state.personalEntered}
+            personalEntered={personalEntered}
           />
           <SchoolHistory
-            schoolHistory={this.state.educationHistory}
-            setEducationHistory={this.setEducationHistory}
-            setSchoolIndex={this.setSchoolIndex}
+            schoolHistory={educationHistory}
+            setEducationHistory={setEducationHistory}
+            setSchoolIndex={setSchoolIndex}
             setSchoolEdit={this.setSchoolEdit}
-            schoolEntered={this.state.schoolEntered}
-            setSchoolEntered={this.setSchoolEntered}
+            schoolEntered={schoolEntered}
+            setSchoolEntered={setSchoolEntered}
           />
           <JobHistory
-            jobHistory={this.state.workHistory}
-            setWorkHistory={this.setWorkHistory}
-            setWorkIndex={this.setWorkIndex}
+            jobHistory={workHistory}
+            setWorkHistory={setWorkHistory}
+            setWorkIndex={setWorkIndex}
             setWorkEdit={this.setWorkEdit}
-            jobEntered={this.state.jobEntered}
-            setJobEntered={this.setJobEntered}
+            jobEntered={jobEntered}
+            setJobEntered={setJobEntered}
           />
         </div>
         <Footer />
