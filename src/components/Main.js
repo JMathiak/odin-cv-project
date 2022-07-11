@@ -10,166 +10,38 @@ import PersonalInfo from "./cv-display/PersonalInfo";
 import "../styles/main.css";
 import Header from "./Header";
 import Footer from "./Footer";
-class Main extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: "",
-      email: "",
-      phone: "",
-      personalInformation: {},
-      personalEntered: false,
-      schoolName: "",
-      study: "",
-      studyDateStart: "",
-      studyDateEnd: "",
-      school: {},
-      educationHistory: [],
-      schoolEntered: false,
-      company: "",
-      position: "",
-      tasks: "",
-      companyStart: "",
-      companyEnd: "",
-      job: {},
-      workHistory: [],
-      jobEntered: false,
-      cv: {},
-      editingSchool: false,
-      schoolIndex: 0,
-      editingPersonal: false,
-      editingWork: false,
-      workIndex: 0,
-    };
-    this.onChange = this.onChange.bind(this);
-    this.onClickPersonal = this.onClickPersonal.bind(this);
-    this.onClickPersonalEdit = this.onClickPersonalEdit.bind(this);
-    this.onClickPersonalDelete = this.onClickPersonalDelete.bind(this);
-    this.onClickEducation = this.onClickEducation.bind(this);
-    this.onClickEducationEdit = this.onClickEducationEdit.bind(this);
-    this.onCLickEducationDelete = this.onCLickEducationDelete.bind(this);
-    this.setEducationHistory = this.setEducationHistory.bind(this);
-    this.onClickWork = this.onClickWork.bind(this);
-    this.setWorkHistory = this.setWorkHistory.bind(this);
-    this.setSchoolIndex = this.setSchoolIndex.bind(this);
-    this.setSchoolEdit = this.setSchoolEdit.bind(this);
-    this.setPersonalEdit = this.setPersonalEdit.bind(this);
-    this.setWorkEdit = this.setWorkEdit.bind(this);
-    this.setWorkIndex = this.setWorkIndex.bind(this);
-    this.setJobEntered = this.setJobEntered.bind(this);
-    this.setSchoolEntered = this.setSchoolEntered.bind(this);
-  }
+const Main = () => {
 
-  onChange(e) {
-    let n = e.target.value;
-    this.setState({
-      ...this.state,
-      [e.target.name]: n,
-    });
-  }
+    
+      const[name, setName] = useState('');
+      const[email, setEmail] = useState('');
+      const[phone, setPhone] = useState('');
+      const[personalInformation, setPersonalInformation] = useState({});
+      const[personalEntered, setPersonalEntered] = useState(false);
+      const[schoolName, setSchoolName] = useState('');
+      const[study, setStudy] = useState('');
+      const[studyDateStart, setStudyDateStart] = useState('');
+       const[studyDateEnd, setStudyDateEnd] = useState('');
+       const[school, setSchool] = useState({});
+       const[educationHistory, setEducationHistory] = useState([]);
+       const[schoolEntered, setSchoolEntered] = useState(false);
+      const[company, setCompany] = useState('');
+      const[position, setPosition] = useState('');
+      const[tasks, setTasks] = useState('');
+      const[companyStart, setCompanyStart] = useState('');
+      const[companyEnd, setCompanyEnd] = useState('');
+      const[job, setJob] = useState({});
+      const[jobEntered, setJobEntered] = useState(false);
+      const[editingSchool, setEditingSchool] = useState(false);
+      const[schoolIndex, setSchoolIndex] = useState(0);
+      const[editingPersonal, setEditingPersonal] = useState(false);
+      const[editingWork, setEditingWork] = useState(false);
+      const[workIndex, setWorkIndex] = useState(0);
 
-  onClickPersonal(e) {
-    e.preventDefault();
-    this.setState({
-      personalInformation: {
-        ...this.state.personalInformation,
-        name: this.state.name,
-        email: this.state.email,
-        phone: this.state.phone,
-      },
-      name: "",
-      email: "",
-      phone: "",
-      personalEntered: true,
-    });
-  }
 
-  onClickEducation(e) {
-    e.preventDefault();
-    if (this.state.editingSchool === true) {
-      const eduCopy = this.state.educationHistory.slice();
-      eduCopy[this.state.schoolIndex] = {
-        schoolName: this.state.schoolName,
-        study: this.state.study,
-        studyDateStart: this.state.studyDateStart,
-        studyDateEnd: this.state.studyDateEnd,
-      };
-      this.setState({
-        educationHistory: eduCopy,
-        schoolName: "",
-        study: "",
-        studyDateStart: "",
-        studyDateEnd: "",
-        editingSchool: false,
-      });
-    } else {
-      let school = {
-        schoolName: this.state.schoolName,
-        study: this.state.study,
-        studyDateStart: this.state.studyDateStart,
-        studyDateEnd: this.state.studyDateEnd,
-        uniqueID: uniqid(),
-      };
-      this.setState({
-        educationHistory: this.state.educationHistory.concat(school),
-        schoolName: "",
-        study: "",
-        studyDateStart: "",
-        studyDateEnd: "",
-        schoolEntered: true,
-      });
-    }
-  }
 
-  onClickWork(e) {
-    e.preventDefault();
-    if (this.state.editingWork === true) {
-      const workCopy = this.state.workHistory.slice();
-      workCopy[this.state.workIndex] = {
-        company: this.state.company,
-        position: this.state.position,
-        tasks: this.state.tasks,
-        companyStart: this.state.companyStart,
-        companyEnd: this.state.companyEnd,
-      };
-      this.setState({
-        workHistory: workCopy,
-        company: "",
-        position: "",
-        tasks: "",
-        companyStart: "",
-        companyEnd: "",
-        editingWork: false,
-      });
-    } else {
-      let job = {
-        company: this.state.company,
-        position: this.state.position,
-        tasks: this.state.tasks,
-        companyStart: this.state.companyStart,
-        companyEnd: this.state.companyEnd,
-        uniqueID: uniqid(),
-      };
-      this.setState({
-        workHistory: this.state.workHistory.concat(job),
-        company: "",
-        position: "",
-        tasks: "",
-        companyStart: "",
-        companyEnd: "",
-        jobEntered: true,
-      });
-    }
-  }
 
-  onClickPersonalEdit(e) {
-    e.preventDefault();
-    this.setState({
-      name: this.state.personalInformation.name,
-      email: this.state.personalInformation.email,
-      phone: this.state.personalInformation.phone,
-    });
-  }
+
 
   //Need to implement a filter to the school history array to get the school of interest
   onClickEducationEdit(e) {
@@ -181,18 +53,6 @@ class Main extends Component {
     });
   }
 
-  onClickPersonalDelete(e) {
-    e.preventDefault();
-    let deletedPersonalObj = {
-      name: "",
-      email: "",
-      phone: "",
-    };
-    this.setState({
-      personalInformation: deletedPersonalObj,
-      personalEntered: false,
-    });
-  }
 
   //Need to implement a filter to the school history array to delete school of interest
   onCLickEducationDelete(e) {
@@ -211,29 +71,7 @@ class Main extends Component {
     });
   }
 
-  setEducationHistory(newHistory) {
-    this.setState({ educationHistory: newHistory });
-  }
-
-  setWorkHistory(newHistory) {
-    this.setState({ workHistory: newHistory });
-  }
-
-  setSchoolIndex(index) {
-    this.setState({ schoolIndex: index });
-  }
-
-  setWorkIndex(index) {
-    this.setState({ workIndex: index });
-  }
-
-  setJobEntered(status) {
-    this.setState({ jobEntered: status });
-  }
-
-  setSchoolEntered(status) {
-    this.setState({ schoolEntered: status });
-  }
+  
 
   setSchoolEdit(school) {
     this.setState({
@@ -265,37 +103,53 @@ class Main extends Component {
     });
   }
 
-  render() {
+  
     return (
       <div className="app-container">
         <Header />
         <PersonalForm
-          onChange={this.onChange}
-          onClick={this.onClickPersonal}
-          onClickEdit={this.onClickPersonalEdit}
-          onClickDelete={this.onClickPersonalDelete}
-          name={this.state.name}
-          email={this.state.email}
-          phone={this.state.phone}
+          name={name}
+          setName={setName}
+          email={email}
+          setEmail = {setEmail}
+          phone={phone}
+          setPhone={setPhone}
+          setPersonalInformation={setPersonalInformation}
+          setPersonalEntered={setPersonalEntered}
         />
         <EducationForm
-          onChange={this.onChange}
-          onClick={this.onClickEducation}
-          schoolName={this.state.schoolName}
-          study={this.state.study}
-          studyDateStart={this.state.studyDateStart}
-          studyDateEnd={this.state.studyDateEnd}
-          editingSchool={this.state.editingSchool}
+          schoolName={schoolName}
+          setSchoolName={setSchoolName}
+          study={study}
+          setStudy={setStudy}
+          studyDateStart={studyDateStart}
+          setStudyDateStart={setStudyDateStart}
+          studyDateEnd={studyDateEnd}
+          setStudyDateEnd={setStudyDateEnd}
+          editingSchool={editingSchool}
+          setEditingSchool={setEditingSchool}
+          educationHistory={educationHistory}
+          setEducationHistory={setEducationHistory}
+          schoolIndex={schoolIndex}
         />
         <WorkForm
-          onChange={this.onChange}
-          onClick={this.onClickWork}
-          company={this.state.company}
-          position={this.state.position}
-          tasks={this.state.tasks}
-          companyStart={this.state.companyStart}
-          companyEnd={this.state.companyEnd}
-          editingWork={this.state.editingWork}
+          company={company}
+          setCompany={setCompany}
+          position={position}
+          setPosition={setPosition}
+          tasks={tasks}
+          setTasks={setTasks}
+          companyStart={companyStart}
+          setCompanyStart={setCompanyStart}
+          companyEnd={companyEnd}
+          setCompanyEnd={setCompanyEnd}
+          editingWork={editingWork}
+          setEditingWork={setEditingWork}
+          workIndex={workIndex}
+          workHistory={workHistory}
+          setWorkHistory={setWorkHistory}
+          jobEntered={jobEntered}
+          setJobEntered={setJobEntered}
         />
         <div className="display">
           <PersonalInfo
@@ -323,7 +177,7 @@ class Main extends Component {
         <Footer />
       </div>
     );
-  }
+  
 }
 
 export default Main;
