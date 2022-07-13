@@ -14,11 +14,8 @@ const PersonalForm = ({
 }) => {
   const submitHandler = (e) => {
     e.preventDefault();
-    setPersonalInformation({
-      name: name,
-      email: email,
-      phone: phone,
-    });
+    let personInfoObj = { name: name, email: email, phone: phone };
+    setPersonalInformation(personInfoObj);
     setName("");
     setEmail("");
     setPhone("");
@@ -27,6 +24,7 @@ const PersonalForm = ({
 
   const editHandler = (e) => {
     e.preventDefault();
+    console.log(personalInformation);
     setName(personalInformation.name);
     setEmail(personalInformation.email);
     setPhone(personalInformation.phone);

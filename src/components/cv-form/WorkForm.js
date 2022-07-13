@@ -108,7 +108,7 @@ const WorkForm = ({
         ></input>
         <div className="form-buttons">
           <button onClick={handleClick}>
-            {!this.props.editingWork ? "Submit" : "Edit"}
+            {!editingWork ? "Submit" : "Edit"}
           </button>
         </div>
       </form>

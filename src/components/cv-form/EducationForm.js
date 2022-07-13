@@ -15,6 +15,8 @@ const EducationForm = ({
   educationHistory,
   setEducationHistory,
   schoolIndex,
+  schoolEntered,
+  setSchoolEntered,
 }) => {
   const handleClick = (e) => {
     e.preventDefault();
@@ -37,7 +39,7 @@ const EducationForm = ({
         uniqueID: uniqid(),
       };
       setEducationHistory([...educationHistory, school]);
-      setEditingSchool(true);
+      setSchoolEntered(true);
     }
     setSchoolName("");
     setStudy("");
@@ -93,7 +95,7 @@ const EducationForm = ({
 
         <div className="form-buttons">
           <button onClick={handleClick}>
-            {!this.props.editingSchool ? "Submit" : "Edit"}
+            {!editingSchool ? "Submit" : "Edit"}
           </button>
         </div>
       </form>

@@ -1,48 +1,48 @@
 import React, { Component } from "react";
 
-class Job extends Component {
-  constructor(props) {
-    super(props);
-    this.deleteHandler = this.deleteHandler.bind(this);
-    this.editHandler = this.editHandler.bind(this);
-  }
-
-  deleteHandler() {
-    let newArr = this.props.jobs.filter(
-      (curJob) => curJob.uniqueID !== this.props.work.uniqueID
-    );
-    this.props.setWorkHistory(newArr);
+const Job = ({
+  jobs,
+  name,
+  work,
+  workID,
+  setWorkHistory,
+  setWorkIndex,
+  setWorkEdit,
+  setJobEntered,
+}) => {
+  const deleteHandler = () => {
+    let newArr = jobs.filter((curJob) => curJob.uniqueID !== work.uniqueID);
+    setWorkHistory(newArr);
     if (newArr.length === 0) {
-      this.props.setJobEntered(false);
+      setJobEntered(false);
     }
-  }
+  };
 
-  editHandler() {
-    let pos = this.props.jobs
+  const editHandler = () => {
+    let pos = jobs
       .map(function (e) {
         return e.uniqueID;
       })
-      .indexOf(this.props.workID);
-    this.props.setWorkIndex(pos);
-    this.props.setWorkEdit(this.props.work);
-  }
-  render() {
-    return (
-      <li>
-        {this.props.work.companyStart} - {this.props.work.companyEnd} &emsp;
-        <button onClick={this.deleteHandler}>Delete</button>{" "}
-        <button onClick={this.editHandler}>Edit</button>
+      .indexOf(workID);
+    setWorkIndex(pos);
+    setWorkEdit(work);
+  };
+
+  return (
+    <li>
+      {work.companyStart} - {work.companyEnd} &emsp;
+      <button onClick={deleteHandler}>Delete</button>{" "}
+      <button onClick={editHandler}>Edit</button>
+      <ul>
+        <li>
+          {name} - {work.position}{" "}
+        </li>
         <ul>
-          <li>
-            {this.props.name} - {this.props.work.position}{" "}
-          </li>
-          <ul>
-            <li>{this.props.work.tasks}</li>
-          </ul>
+          <li>{work.tasks}</li>
         </ul>
-      </li>
-    );
-  }
-}
+      </ul>
+    </li>
+  );
+};
 
 export default Job;
